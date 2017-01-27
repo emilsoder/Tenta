@@ -1,0 +1,13 @@
+﻿@model Tenta.Controllers.Uppgift1Model
+@{
+    string inStock = (Model.IsInStock) ? "I lager" : "Ej i lager";
+}
+
+<h2> Du har sparat följande uppgifter:</h2>
+<br />
+
+<p>Titel: @Model.Title</p>
+<p>Författare: @Model.Author</p>
+<p>Antal sidor: @Model.Pages</p>
+<p>Kategori: @Model.SelectedCategory</p>
+<p>@inStock</p>

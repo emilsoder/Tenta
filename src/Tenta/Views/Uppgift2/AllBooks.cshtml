@@ -1,0 +1,15 @@
+﻿@model List<Tenta.Models.Bok>
+
+<h2>Valda böcker</h2>
+<br />
+
+@foreach (var item in Model)
+{
+    string inStock = (item.Ilager) ? "I lager" : "Ej i lager";
+
+    <p>Titel: @item.Titel</p>
+    <p>Författare: @item.Forfattare</p>
+    <p>Antal sidor: @item.AntalSidor</p>
+    <p>I lager: @inStock</p>
+    <hr />
+}

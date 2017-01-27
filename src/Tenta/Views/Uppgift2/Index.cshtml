@@ -1,0 +1,35 @@
+﻿@model Tenta.Controllers.Uppgift2ViewModel
+
+<h2>Välj en bok</h2>
+
+@if (ViewData["error"] != null)
+{
+    if (ViewData["error"].ToString() == "tooMany")
+    {
+        <h4 class="text-danger">Det går att välja fyra böcker</h4>
+    }
+    else
+    {
+        <h4 class="text-danger">Du kan inte välja samma bok flera gånger.</h4>
+    }
+}
+
+<div class="form-group">
+    <form asp-action="AddSelectedBook">
+        <div class="form-group">
+            <select asp-for="@Model.bok.BokId">
+                @foreach (var item in Model.BokList)
+                {
+                    <option value="@item.BokId">@item.Titel - @item.Forfattare</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-default" value="Välj bok" />
+            @if (this.Context.Session.Keys.Count() > 0)
+            {
+                <a asp-action="AllBooks" class="btn btn-default">Visa valda böcker</a>
+            }
+        </div>
+    </form>
+</div>
